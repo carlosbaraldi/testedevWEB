@@ -1,63 +1,67 @@
-# CodeIgniter 4 Application Starter
+# Aplicação para Teste de Desenvolvedor WEB em CodeIgniter 4
 
-## What is CodeIgniter?
+## Dados para acesso na aplicação WEB
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+https://carlostesteweb.000webhostapp.com
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+email = teste@teste.com
+senha = devweb
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+## Criação Banco de Dados
 
-## Installation & updates
+# Criação Banco de Dados
+CREATE SCHEMA `teste_dev` DEFAULT CHARACTER SET utf8mb4 ;
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+# Criação Tabela Usuarios
+CREATE TABLE `tbUsuarios` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `userName` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `admin` int(1) DEFAULT '0',
+  `created_at` timestamp(6) NULL DEFAULT NULL,
+  `updated_at` timestamp(6) NULL DEFAULT NULL,
+  `deleted_at` timestamp(6) NULL DEFAULT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+--
+-- Dumping data for table `tbUsuarios`
+--
 
-## Setup
+LOCK TABLES `tbUsuarios` WRITE;
+/*!40000 ALTER TABLE `tbUsuarios` DISABLE KEYS */;
+INSERT INTO `tbUsuarios` VALUES (1,'Carlos Eduardo Baraldi','teste@teste.com','$2y$10$9U301uauu0ohM1WREGqjS.M304.vQgEFq/bYpww1Iv80d946OUE6m',0,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `tbUsuarios` ENABLE KEYS */;
+UNLOCK TABLES;
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
 
-## Important Change with index.php
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+# Criação Tabela Enquetes
+CREATE TABLE `tbEnquetes` (
+  `idEnquete` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL,
+  `tituloEnquete` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `perguntaEnquete` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp(6) NULL DEFAULT NULL,
+  `updated_at` timestamp(6) NULL DEFAULT NULL,
+  `deleted_at` timestamp(6) NULL DEFAULT NULL,
+  PRIMARY KEY (`idEnquete`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
 
-**Please** read the user guide for a better explanation of how CI4 works!
 
-## Repository Management
 
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.3 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+# Criação Tabela Respostas
+CREATE TABLE `tbRespostas` (
+  `idResposta` int(11) NOT NULL AUTO_INCREMENT,
+  `enquete_id` int(11) NOT NULL DEFAULT '0',
+  `resposta` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qtdVotos` int(11) DEFAULT '0',
+  `created_at` timestamp(6) NULL DEFAULT NULL,
+  `updated_at` timestamp(6) NULL DEFAULT NULL,
+  `deleted_at` timestamp(6) NULL DEFAULT NULL,
+  PRIMARY KEY (`idResposta`)
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
