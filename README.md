@@ -8,9 +8,9 @@ email = teste@teste.com
 senha = devweb
 
 
-## Criação Banco de Dados
-
 # Criação Banco de Dados
+
+### Criação Banco de Dados
 CREATE SCHEMA `teste_dev` DEFAULT CHARACTER SET utf8mb4 ;
 
 # Criação Tabela Usuarios
