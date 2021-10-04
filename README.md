@@ -10,6 +10,8 @@ senha = devweb
 
 # Criação Banco de Dados
 
+Aquivos .sql também estão disponiveis no Git
+
 ### Criação Banco de Dados
 CREATE SCHEMA `teste_dev` DEFAULT CHARACTER SET utf8mb4 ;
 
