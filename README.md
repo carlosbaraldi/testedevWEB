@@ -13,7 +13,7 @@ senha = devweb
 ### Criação Banco de Dados
 CREATE SCHEMA `teste_dev` DEFAULT CHARACTER SET utf8mb4 ;
 
-# Criação Tabela Usuarios
+### Criação Tabela Usuarios
 CREATE TABLE `tbUsuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
@@ -25,21 +25,13 @@ CREATE TABLE `tbUsuarios` (
   `deleted_at` timestamp(6) NULL DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tbUsuarios`
---
-
-LOCK TABLES `tbUsuarios` WRITE;
-/*!40000 ALTER TABLE `tbUsuarios` DISABLE KEYS */;
 INSERT INTO `tbUsuarios` VALUES (1,'Carlos Eduardo Baraldi','teste@teste.com','$2y$10$9U301uauu0ohM1WREGqjS.M304.vQgEFq/bYpww1Iv80d946OUE6m',0,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `tbUsuarios` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 
-# Criação Tabela Enquetes
+
+### Criação Tabela Enquetes
 CREATE TABLE `tbEnquetes` (
   `idEnquete` int(11) NOT NULL AUTO_INCREMENT,
   `idUsuario` int(11) NOT NULL,
@@ -54,7 +46,7 @@ CREATE TABLE `tbEnquetes` (
 
 
 
-# Criação Tabela Respostas
+#### Criação Tabela Respostas
 CREATE TABLE `tbRespostas` (
   `idResposta` int(11) NOT NULL AUTO_INCREMENT,
   `enquete_id` int(11) NOT NULL DEFAULT '0',
